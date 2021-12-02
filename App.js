@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
 import Convertor from './Components/Convertor';
+import { MaterialIcons } from '@expo/vector-icons';
 
 
 var iconSize = 26;
@@ -51,11 +51,20 @@ const units = {
 const App = () => {
   const [tabOption, setTabOption] = React.useState(0)
 
+  const tabSelectedColor = option => {
+    if (option === tabOption) {
+      return "#ffb800"
+    } else
+      return "#202020"
+  }
+
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, color: 'black', padding: 20 }}>Unit Convertor</Text>
+        <Text style={{
+          fontSize: 30, color: 'white', fontWeight: 'bold', padding: 20
+        }}>Unit Convertor</Text>
         <Convertor unit={units.unit[tabOption]} />
         <StatusBar style="light" />
       </View>
@@ -63,13 +72,13 @@ const App = () => {
       <View style={styles.NavigationContainer}>
         <View style={styles.NavBar}>
           <Pressable onPress={() => setTabOption(0)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
-            <MaterialCommunityIcons name="scale-bathroom" size={iconSize} color="#202020" />
+            <MaterialCommunityIcons name="scale-bathroom" size={iconSize} color={tabSelectedColor(0)} />
           </Pressable>
           <Pressable onPress={() => setTabOption(1)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
-            <FontAwesome5 name="tape" size={iconSize} color="#202020" />
+            <MaterialCommunityIcons name="tape-measure" size={iconSize} color={tabSelectedColor(1)} />
           </Pressable>
           <Pressable onPress={() => setTabOption(2)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
-            <MaterialCommunityIcons name="speedometer" size={iconSize} color="#202020" />
+            <MaterialIcons name="sd-storage" size={iconSize} color={tabSelectedColor(2)} />
           </Pressable>
         </View>
       </View>
@@ -82,7 +91,7 @@ export default App
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EAED',
+    backgroundColor: '#ffc700',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -93,10 +102,14 @@ const styles = StyleSheet.create({
   },
   NavBar: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: '#E8EAED',
     borderColor: '#d6d6d6',
     borderWidth: 1,
     width: '90%',
+    shadowOffset: { width: 0, height: 2, },
+    shadowColor: "grey",
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
     justifyContent: 'space-evenly',
     borderRadius: 40,
 

@@ -72,12 +72,16 @@ const Convertor = ({ unit }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#E8EAED',
         borderRadius: 20,
         height: '75%',
         justifyContent: 'center',
         borderColor: '#d6d6d6',
         borderWidth: 1,
+        shadowOffset: { width: 0, height: 2, },
+        shadowColor: "grey",
+        shadowOpacity: 0.5,
+        shadowRadius: 10,
 
     },
     picker: {
@@ -87,6 +91,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         borderColor: '#d6d6d6',
+        shadowOffset: { width: 0, height: 2, },
+        shadowColor: "grey",
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+
 
     },
     input: {
@@ -97,6 +106,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         borderColor: '#d6d6d6',
+        shadowOffset: { width: 0, height: 2, },
+        shadowColor: "grey",
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
 
     },
 });
