@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Convertor from './Components/Convertor';
 import { MaterialIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 var iconSize = 26;
@@ -53,36 +54,43 @@ const App = () => {
 
   const tabSelectedColor = option => {
     if (option === tabOption) {
-      return "#ffb800"
+      return "#9C51B6"
     } else
       return "#202020"
   }
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{ alignItems: 'center' }}>
-        <Text style={{
-          fontSize: 30, color: 'white', fontWeight: 'bold', padding: 20
-        }}>Unit Convertor</Text>
-        <Convertor unit={units.unit[tabOption]} />
-        <StatusBar style="light" />
-      </View>
-
-      <View style={styles.NavigationContainer}>
-        <View style={styles.NavBar}>
-          <Pressable onPress={() => setTabOption(0)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
-            <MaterialCommunityIcons name="scale-bathroom" size={iconSize} color={tabSelectedColor(0)} />
-          </Pressable>
-          <Pressable onPress={() => setTabOption(1)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
-            <MaterialCommunityIcons name="tape-measure" size={iconSize} color={tabSelectedColor(1)} />
-          </Pressable>
-          <Pressable onPress={() => setTabOption(2)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
-            <MaterialIcons name="sd-storage" size={iconSize} color={tabSelectedColor(2)} />
-          </Pressable>
+    <LinearGradient
+      colors={['#9C51B6', '#5946B2']}
+      style={{
+        flex: 1, justifyContent: 'center', alignItems: 'center'
+      }}
+    >
+      <SafeAreaView style={styles.container}>
+        <View style={{ alignItems: 'center' }}>
+          <Text style={{
+            fontSize: 30, color: 'white', fontWeight: 'bold', padding: 20
+          }}>Unit Convertor</Text>
+          <Convertor unit={units.unit[tabOption]} />
+          <StatusBar style="light" />
         </View>
-      </View>
-    </SafeAreaView>
+
+        <View style={styles.NavigationContainer}>
+          <View style={styles.NavBar}>
+            <Pressable onPress={() => setTabOption(0)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
+              <MaterialCommunityIcons name="scale-bathroom" size={iconSize} color={tabSelectedColor(0)} />
+            </Pressable>
+            <Pressable onPress={() => setTabOption(1)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
+              <MaterialCommunityIcons name="tape-measure" size={iconSize} color={tabSelectedColor(1)} />
+            </Pressable>
+            <Pressable onPress={() => setTabOption(2)} style={styles.IconBehave} android_ripple={{ borderless: true, radius: 50 }}>
+              <MaterialIcons name="sd-storage" size={iconSize} color={tabSelectedColor(2)} />
+            </Pressable>
+          </View>
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
 
   );
 }
@@ -91,7 +99,6 @@ export default App
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffc700',
     alignItems: 'center',
     justifyContent: 'center'
   },
